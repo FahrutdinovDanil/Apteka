@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Apteka
@@ -10,7 +11,7 @@ namespace Apteka
         public int IdPharmacy { get; set; }
         public int Count { get; set; }
 
-        public static List<InStock> GetDrugPharms()
+        public static List<InStock> GetInStock()
         {
             return new List<InStock>()
             {
@@ -22,6 +23,15 @@ namespace Apteka
                 new InStock {IdDrug = 1, IdPharmacy = 2, Count = 2 },
                 new InStock {IdDrug = 3, IdPharmacy = 2, Count = 5 }
             };
+        }
+        public static List<Drug> GetDrugInPharms(int Id)
+        {
+            List<Drug> drug = new List<Drug>();
+            foreach (var i in GetInStock().Where(a => a.IdPharmacy == Id))
+            {
+                drug.Add(Drug.GetDrug().Where(a => a.Id == i.IdDrug).FirstOrDefault());
+            }
+            return drug;
         }
     }
 }

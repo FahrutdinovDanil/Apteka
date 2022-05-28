@@ -1,22 +1,27 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Apteka
 {
     public class Pharmacy
     {
+        public List<Pharmacist> Pharms;
+
         public int Id { get; set; }
         public string Address { get; set; }
 
-        public List<Pharmacy> GetPharmacies()
+        public Dictionary<Drug, int> Drugs { get; set; }
+
+        public Pharmacy(string address) : base()
         {
-            return new List<Pharmacy>()
-            {
-                new Pharmacy { Id = 1, Address = "Московская 48"},
-                new Pharmacy { Id = 2, Address = "Николая Ершова 78"},
-                new Pharmacy { Id = 3, Address = "Космонавтов 26"}
-            };
+            Address = address;
+        }
+        public List<Pharmacist> GetPharmacistsByBirthYear(int year)
+        {
+            return Pharms.Where(x => x.Birthday.Year == year).ToList();
         }
     }
 }

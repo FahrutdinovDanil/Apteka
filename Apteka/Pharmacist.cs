@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Apteka
 {
     public class Pharmacist
     {
-        public int Id { get; set; }
+        List<Pharmacist> Pharm = new List<Pharmacist>();
         public string FullName { get; set; }
-        public int Experience { get; set; }
+        public DateTime Birthday { get; set; }
+        public double Exp { get; set; }
 
-        public List<Pharmacist> GetPharmacists()
+        public Pharmacist(string fullName, DateTime date, double exp)
         {
-            return new List<Pharmacist>()
-            {
-                new Pharmacist { Id = 1, FullName = "Хайруллин Адель Ильдарович", Experience = 3},
-                new Pharmacist { Id = 2, FullName = "Барышев Эмиль Евгеньевич", Experience = 4},
-                new Pharmacist { Id = 3, FullName = "Гаврилов Даниил Игоревич", Experience = 5}
-            };
+            FullName = fullName;
+            Birthday = date;
+            Exp = exp;
         }
     }
 }

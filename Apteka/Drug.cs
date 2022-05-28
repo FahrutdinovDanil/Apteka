@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Apteka
@@ -22,6 +23,37 @@ namespace Apteka
                 new Drug { Id = 5, Name = "Терафлю", IdManufacturer = 3, Price = 467}
             };
         }
-   
+
+        public static List<string> GetName()
+        {
+            List<string> DrugName = new List<string>();
+            foreach (var i in GetDrug())
+                DrugName.Add(i.Name);
+            return DrugName;
+        }
+
+        public static List<string> GetNameManufacture()
+        {
+            List<string> ManufactureName = new List<string>();
+            foreach (var i in Manufacturer.GetManufacturers())
+                ManufactureName.Add(i.Name);
+            return ManufactureName;
+        }
+
+        public static List<Drug> SortByOrder()
+        {
+            return GetDrug().OrderBy(a => a.Price).ToList();
+        }
+
+        public static List<Drug> SortDescOrder()
+        {
+            return GetDrug().OrderByDescending(a => a.Price).ToList();
+        }
+
+        public static string ExpensiveDrug()
+        {
+            var expensive = GetDrug().OrderByDescending(a => a.Price).ToList();
+            return expensive[0].Name;
+        }
     }
 }

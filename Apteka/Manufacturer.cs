@@ -13,9 +13,9 @@ namespace Apteka
         {
             return new List<Manufacturer>()
             {
-                new Manufacturer() { Id = 0, Name ="Эвалар"},
-                new Manufacturer() { Id = 1, Name ="Фармстандарт"},
-                new Manufacturer() { Id = 2, Name ="Еаптека"}
+                new Manufacturer() { Id = 1, Name ="Эвалар"},
+                new Manufacturer() { Id = 2, Name ="Фармстандарт"},
+                new Manufacturer() { Id = 3, Name ="Еаптека"}
             };
         }
     }
